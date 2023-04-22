@@ -5,7 +5,7 @@ import { Venue } from "./Venue.model";
 export class Event {
 
     constructor(
-        public id?: string,
+        public id?: number,
         public name?: string,
         public category?: string,
         public date?: string,
@@ -13,7 +13,7 @@ export class Event {
         public duration?: string,
         public banner?: string,
         public description?: string,
-        public price?: string,
+        public price?: number,
         public organizer?: Organizer,
         public venue?: Venue,
         public users: User[] = []
