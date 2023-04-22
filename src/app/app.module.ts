@@ -15,6 +15,16 @@ import { ContactComponent } from './contact/contact.component';
 import { BookingComponent } from './booking/booking.component';
 import { BookingconfirmedComponent } from './bookingconfirmed/bookingconfirmed.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { YoureventsComponent } from './yourevents/yourevents.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { enGbLocale } from 'ngx-bootstrap/locale';
+import { FormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgToastModule } from 'ng-angular-popup';
+
+defineLocale('en-gb', enGbLocale);
 
 @NgModule({
   declarations: [
@@ -30,11 +40,21 @@ import { InvoiceComponent } from './invoice/invoice.component';
     ContactComponent,
     BookingComponent,
     BookingconfirmedComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    NotfoundComponent,
+    YoureventsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BsDatepickerModule.forRoot(),
+    FormsModule,
+    NoopAnimationsModule,
+    NgToastModule
+
+
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -29,21 +29,7 @@
                         <div class="event-img">
                             <img src="../../assets/images/event-imgs/big-2.jpg" alt="">
                         </div>
-                        <div class="share-save-btns dropdown">
-                            <button class="sv-btn me-2"><i class="fa-regular fa-bookmark me-2"></i>Save</button>
-                            <button class="sv-btn" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="fa-solid fa-share-nodes me-2"></i>Share</button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#"><i
-                                            class="fa-brands fa-facebook me-3"></i>Facebook</a></li>
-                                <li><a class="dropdown-item" href="#"><i
-                                            class="fa-brands fa-twitter me-3"></i>Twitter</a></li>
-                                <li><a class="dropdown-item" href="#"><i
-                                            class="fa-brands fa-linkedin-in me-3"></i>LinkedIn</a></li>
-                                <li><a class="dropdown-item" href="#"><i
-                                            class="fa-regular fa-envelope me-3"></i>Email</a></li>
-                            </ul>
-                        </div>
+
                         <div class="main-event-content">
                             <h4>About This Event</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor justo, sodales
@@ -95,7 +81,6 @@
                             <div class="event-dt-right-content">
                                 <h4>Organised by</h4>
                                 <h5>The Teeny Rabbit</h5>
-                                <a href="attendee_profile_view.html">View Profile</a>
                             </div>
                         </div>
                         <div class="event-dt-right-group">
@@ -105,21 +90,7 @@
                             <div class="event-dt-right-content">
                                 <h4>Date and Time</h4>
                                 <h5>Sat, Apr 30, 2022 11:30 AM</h5>
-                                <div class="add-to-calendar">
-                                    <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-regular fa-calendar-days me-3"></i>Add to Calendar
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#"><i
-                                                    class="fa-brands fa-windows me-3"></i>Outlook</a></li>
-                                        <li><a class="dropdown-item" href="#"><i
-                                                    class="fa-brands fa-apple me-3"></i>Apple</a></li>
-                                        <li><a class="dropdown-item" href="#"><i
-                                                    class="fa-brands fa-google me-3"></i>Google</a></li>
-                                        <li><a class="dropdown-item" href="#"><i
-                                                    class="fa-brands fa-yahoo me-3"></i>Yahoo</a></li>
-                                    </ul>
-                                </div>
+
                             </div>
                         </div>
                         <div class="event-dt-right-group">
@@ -129,7 +100,6 @@
                             <div class="event-dt-right-content">
                                 <h4>Location</h4>
                                 <h5 class="mb-0">00 Challis St, Newport, Victoria, 0000, Australia</h5>
-                                <a href="#"><i class="fa-solid fa-location-dot me-2"></i>View Map</a>
                             </div>
                         </div>
                         <div class="select-tickets-block">
@@ -139,13 +109,12 @@
                                 <div class="quantity">
                                     <div class="counter">
                                         <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                                        <input type="text" value="0">
+                                        <input type="text" value="1">
                                         <span class="up" onClick='increaseCount(event, this)'>+</span>
                                     </div>
                                 </div>
                             </div>
-                            <p>2 x pair hand painted leather earrings 1 x glass of bubbles / or coffee Individual
-                                grazing box / fruit cup</p>
+
                             <div class="xtotel-tickets-count">
                                 <div class="x-title">1x Ticket(s)</div>
                                 <h4>AUD <span>$0.00</span></h4>
@@ -160,7 +129,7 @@
                     <div class="more-events">
                         <div class="main-title position-relative">
                             <h3>More Events</h3>
-                            <a href="explore_events.html" class="view-all-link">Browse All<i
+                            <a routerLink="/events" class="view-all-link">Browse All<i
                                     class="fa-solid fa-right-long ms-2"></i></a>
                         </div>
                         <div class="owl-carousel moreEvents-slider owl-theme">
