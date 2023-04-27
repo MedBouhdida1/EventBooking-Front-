@@ -9,8 +9,6 @@ import { FooterComponent } from './footer/footer.component';
 import { EventsComponent } from './events/events.component';
 import { CreateeventComponent } from './createevent/createevent.component';
 import { EventdetailComponent } from './eventdetail/eventdetail.component';
-import { SigninComponent } from './signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
 import { ContactComponent } from './contact/contact.component';
 import { BookingComponent } from './booking/booking.component';
 import { BookingconfirmedComponent } from './bookingconfirmed/bookingconfirmed.component';
@@ -23,6 +21,12 @@ import { enGbLocale } from 'ngx-bootstrap/locale';
 import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgToastModule } from 'ng-angular-popup';
+import { SigninorganizerComponent } from './signinorganizer/signinorganizer.component';
+import { SigninuserComponent } from './signinuser/signinuser.component';
+import { SignuporganizerComponent } from './signuporganizer/signuporganizer.component';
+import { SignupuserComponent } from './signupuser/signupuser.component';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
 
 defineLocale('en-gb', enGbLocale);
 
@@ -35,14 +39,18 @@ defineLocale('en-gb', enGbLocale);
     EventsComponent,
     CreateeventComponent,
     EventdetailComponent,
-    SigninComponent,
-    SignupComponent,
     ContactComponent,
     BookingComponent,
     BookingconfirmedComponent,
     InvoiceComponent,
     NotfoundComponent,
-    YoureventsComponent
+    YoureventsComponent,
+    SigninorganizerComponent,
+    SigninuserComponent,
+    SignuporganizerComponent,
+    SignupuserComponent,
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

@@ -80,13 +80,25 @@
                 </div>
                 <div class="right-header order-2">
                     <ul class="align-self-stretch">
-                        <li>
+                        <!-- <li>
                             <a routerLink="/createevent" class="create-btn btn-hover">
                                 <i class="fa-solid fa-calendar-days"></i>
                                 <span>Create Event</span>
                             </a>
+                        </li> -->
+                        <li>
+                            <a routerLink="/signin" class="create-btn btn-hover">
+                                <i class="fa fa-sign-in"></i>
+                                <span>Sign In</span>
+                            </a>
                         </li>
-                        <li class="dropdown account-dropdown">
+                        <li>
+                            <a routerLink="/signup" class="create-btn btn-hover">
+                                <i class="fa fa-user-plus"></i>
+                                <span>Sign Up</span>
+                            </a>
+                        </li>
+                        <li class="dropdown account-dropdown" style="display: none;">
                             <a href="#" class="account-link" role="button" id="accountClick"
                                 data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="../../assets/images/profile-imgs/img-13.jpg" alt="">
@@ -110,7 +122,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
+                        <li style="display: none;">
                             <div class="night_mode_switch__btn">
                                 <div id="night-mode" class="fas fa-moon fa-sun"></div>
                             </div>

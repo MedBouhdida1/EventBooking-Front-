@@ -21,7 +21,7 @@ export class CreateeventComponent implements OnInit {
   venue = new Venue();
   event = new Event()
   @ViewChild('myForm') myForm?: NgForm;
-
+  
   constructor(
     private toast: NgToastService,
     private router: Router

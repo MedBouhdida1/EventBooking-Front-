@@ -1,16 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
-
-
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+export class SignupComponent {
 
 }
