@@ -4,6 +4,7 @@ import { Organizer } from '../Models/Organizer.model';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { APIsService } from '../Services/apis.service';
 
 @Component({
   selector: 'app-signuporganizer',
@@ -19,17 +20,29 @@ export class SignuporganizerComponent implements OnInit {
   constructor(
     private router: Router,
     private toast: NgToastService,
+    private service: APIsService
   ) {
 
   }
 
   submit() {
     if (this.myForm?.valid) {
-      this.toast.success({
-        detail: "Sign up success"
-      })
+
       console.log(this.Organizer)
-      this.router.navigate(["/signinorganizer"])
+      this.service.registerOrganizer(this.Organizer).subscribe(
+        res => {
+          this.router.navigate(["/signinorganizer"])
+
+          console.log(res)
+          this.toast.success({
+            detail: "Sign up success"
+          })
+        }, err => {
+          console.log(err)
+          this.toast.warning({
+            detail: "Email already exist"
+          })
+        })
     }
     else {
       this.toast.warning({

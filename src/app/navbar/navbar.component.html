@@ -80,25 +80,25 @@
                 </div>
                 <div class="right-header order-2">
                     <ul class="align-self-stretch">
-                        <!-- <li>
+                        <li *ngIf="token!=null">
                             <a routerLink="/createevent" class="create-btn btn-hover">
                                 <i class="fa-solid fa-calendar-days"></i>
                                 <span>Create Event</span>
                             </a>
-                        </li> -->
-                        <li>
+                        </li>
+                        <li *ngIf="token==null">
                             <a routerLink="/signin" class="create-btn btn-hover">
                                 <i class="fa fa-sign-in"></i>
                                 <span>Sign In</span>
                             </a>
                         </li>
-                        <li>
+                        <li *ngIf="token==null">
                             <a routerLink="/signup" class="create-btn btn-hover">
                                 <i class="fa fa-user-plus"></i>
                                 <span>Sign Up</span>
                             </a>
                         </li>
-                        <li class="dropdown account-dropdown" style="display: none;">
+                        <li *ngIf="token!=null" class="dropdown account-dropdown">
                             <a href="#" class="account-link" role="button" id="accountClick"
                                 data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="../../assets/images/profile-imgs/img-13.jpg" alt="">
@@ -111,14 +111,14 @@
                                         <div class="account-holder-avatar">
                                             <img src="../../assets/images/profile-imgs/img-13.jpg" alt="">
                                         </div>
-                                        <h5>John Doe</h5>
-                                        <p><a>Jhon@gmail.com</a>
+                                        <h5>{{user.firstName}} {{user.lastName}}</h5>
+                                        <p><a>{{user.email}}</a>
                                         </p>
                                     </div>
                                 </li>
                                 <li class="profile-link">
                                     <a class="link-item">My Profile</a>
-                                    <a routerLink="/signin" class="link-item">Sign Out</a>
+                                    <a (click)="Logout()" class="link-item">Sign Out</a>
                                 </li>
                             </ul>
                         </li>

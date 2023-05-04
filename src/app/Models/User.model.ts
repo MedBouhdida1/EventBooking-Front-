@@ -1,13 +1,15 @@
+import { EventUser } from "./EventUser.model";
+
 export class User {
 
     constructor(
         public id?: number,
-        public fistName?: string,
+        public firstName?: string,
         public lastName?: string,
         public password?: string,
         public email?: string,
         public photo?: String,
-        public events: Event[] = []
+        public eventsUsers: EventUser[] = []
     ) {
     }
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { User } from '../Models/User.model';
 import { Organizer } from '../Models/Organizer.model';
 import { NgForm } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
+import { APIsService } from '../Services/apis.service';
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Component({
   selector: 'app-signinorganizer',
@@ -11,12 +12,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./signinorganizer.component.css']
 })
 export class SigninorganizerComponent implements OnInit {
-
   Organizer = new Organizer()
+  helper = new JwtHelperService()
+
   @ViewChild('myForm') myForm?: NgForm;
   constructor(
     private toast: NgToastService,
-    private router: Router
+    private router: Router,
+    private service: APIsService
   ) {
 
   }
@@ -24,12 +27,19 @@ export class SigninorganizerComponent implements OnInit {
 
   submit() {
     if (this.myForm!.valid) {
-      console.log(this.Organizer)
-      this.toast.success({
-        detail: "sign in success"
+      this.service.loginOrganizer(this.Organizer).subscribe(res => {
+        console.log(res)
+        this.toast.success({
+          detail: "Login success"
+        })
+        localStorage.setItem("token", res.token)
+        this.router.navigate(["/home"])
+      }, err => {
+        console.log(err)
+        this.toast.error({
+          detail: "Wrong data"
+        })
       })
-      this.router.navigate(["/home"])
-
     }
     else {
       this.toast.warning({
@@ -38,6 +48,14 @@ export class SigninorganizerComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    let Token: any = localStorage.getItem("token")
+    console.log(Token)
+    if (Token != null) {
+      let decodeToken = this.helper.decodeToken(Token)
+      console.log(decodeToken.role)
+
+      console.log(decodeToken.data)
+    }
   }
 
 

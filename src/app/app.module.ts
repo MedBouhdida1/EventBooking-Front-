@@ -27,6 +27,7 @@ import { SignuporganizerComponent } from './signuporganizer/signuporganizer.comp
 import { SignupuserComponent } from './signupuser/signupuser.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 defineLocale('en-gb', enGbLocale);
 
@@ -58,7 +59,9 @@ defineLocale('en-gb', enGbLocale);
     BsDatepickerModule.forRoot(),
     FormsModule,
     NoopAnimationsModule,
-    NgToastModule
+    NgToastModule,
+    HttpClientModule
+
 
 
 

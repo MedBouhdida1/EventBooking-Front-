@@ -2,12 +2,12 @@ export class Organizer {
 
     constructor(
         public id?: number,
-        public fistName?: string,
+        public firstName?: string,
         public lastName?: string,
         public password?: string,
         public email?: string,
         public photo?: String,
-        public events: Event[] = []
+        public events?: Event[]
 
     ) {
     }

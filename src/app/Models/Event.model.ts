@@ -1,3 +1,4 @@
+import { EventUser } from "./EventUser.model";
 import { Organizer } from "./Organizer.model";
 import { User } from "./User.model";
 import { Venue } from "./Venue.model";
@@ -16,7 +17,7 @@ export class Event {
         public price?: number,
         public organizer?: Organizer,
         public venue?: Venue,
-        public users: User[] = []
+        public eventUsers: EventUser[] = []
 
     ) {
 

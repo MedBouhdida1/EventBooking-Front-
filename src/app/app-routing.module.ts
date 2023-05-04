@@ -12,10 +12,10 @@ import { YoureventsComponent } from './yourevents/yourevents.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { SigninorganizerComponent } from './signinorganizer/signinorganizer.component';
 import { SigninuserComponent } from './signinuser/signinuser.component';
-import { SignupuserComponent } from './signupuser/signupuser.component';
 import { SignuporganizerComponent } from './signuporganizer/signuporganizer.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
+import { SignupuserComponent } from './signupuser/signupuser.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
