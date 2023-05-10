@@ -9,7 +9,7 @@ export class User {
         public password?: string,
         public email?: string,
         public photo?: String,
-        public eventsUsers: EventUser[] = []
+        public eventUsers?: EventUser[]
     ) {
     }
 }

@@ -52,7 +52,6 @@ export class APIsService {
   addEvent(event: Event, id: number) {
     const URL = `${this.event}/${id}`
     return this.http.post<Event>(URL, event)
-
   }
   addvenue(venue: Venue, id: number) {
     const URL = `${this.venue}/${id}`
@@ -69,5 +68,10 @@ export class APIsService {
   }
   addeventuser(eventuser: EventUser) {
     return this.http.post<any>(this.eventuser, eventuser);
+  }
+
+  findEventUserIdAndUserId(eventId: number, userId: number): Observable<EventUser> {
+    const url = `${this.eventuser}/${eventId}/${userId}`
+    return this.http.get<EventUser>(url);
   }
 }

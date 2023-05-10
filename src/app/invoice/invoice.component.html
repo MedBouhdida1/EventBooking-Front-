@@ -20,16 +20,16 @@
                                 <div class="vhls140">
                                     <ul>
                                         <li>
-                                            <div class="vdt-list">Invoice to John Doe</div>
+                                            <div class="vdt-list">Invoice to {{user.firstName}} {{user.lastName}}</div>
                                         </li>
                                         <li>
-                                            <div class="vdt-list">140 St Kilda Rd</div>
+                                            <div class="vdt-list">{{event.venue!.address}}</div>
                                         </li>
                                         <li>
-                                            <div class="vdt-list">Melbourne, Victoria</div>
+                                            <div class="vdt-list">{{event.venue?.country}}, {{event.venue?.state}}</div>
                                         </li>
                                         <li>
-                                            <div class="vdt-list">3000, Australia</div>
+                                            <div class="vdt-list">{{event.venue?.city}}, {{event.venue?.zipcode}}</div>
                                         </li>
                                     </ul>
                                 </div>
@@ -41,11 +41,9 @@
                                             <div class="vdt-list">Invoice ID : YCCURW-000000</div>
                                         </li>
                                         <li>
-                                            <div class="vdt-list">Order Date : 10/05/2022</div>
+                                            <div class="vdt-list">Order Date : {{this.eventUser.date}} </div>
                                         </li>
-                                        <li>
-                                            <div class="vdt-list">Near MBD Mall,</div>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -67,18 +65,18 @@
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td><a href="#" target="_blank">Tutorial on Canvas Painting for
-                                                Beginners</a></td>
-                                        <td>Online</td>
+                                        <td><a routerLink="/eventdetail/{{event.id}}" target="_blank">{{event.name}}</a>
+                                        </td>
+                                        <td>Venue</td>
                                         <td>1</td>
-                                        <td>$75.00</td>
-                                        <td>$75.00</td>
+                                        <td>${{event.price}}</td>
+                                        <td>${{event.price}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="1"></td>
                                         <td colspan="5">
                                             <div class="user_dt_trans text-end pe-xl-4">
-                                                <div class="totalinv2">Invoice Total : USD $36.00</div>
+                                                <div class="totalinv2">Invoice Total : USD ${{event.price}}</div>
                                                 <p>Paid via Paypal</p>
                                             </div>
                                         </td>
@@ -99,15 +97,15 @@
                                             <img src="../../assets/images/event-imgs/img-7.jpg" alt="">
                                         </div>
                                         <div class="event-order-dt-content">
-                                            <h5>Tutorial on Canvas Painting for Beginners</h5>
-                                            <span>Wed, Jun 01, 2022 5:30 AM. Duration 1h</span>
+                                            <h5>{{event.name}}</h5>
+                                            <span>{{event.date}} {{event.time}}. Duration {{event.duration}}</span>
                                             <div class="buyer-name">John Doe</div>
                                             <div class="booking-total-tickets">
                                                 <i class="fa-solid fa-ticket rotate-icon"></i>
                                                 <span class="booking-count-tickets mx-2">1</span>x Ticket
                                             </div>
                                             <div class="booking-total-grand">
-                                                Total : <span>$75.00</span>
+                                                Total : <span>${{event.price}}</span>
                                             </div>
                                         </div>
                                     </div>

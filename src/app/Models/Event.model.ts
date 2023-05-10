@@ -17,7 +17,7 @@ export class Event {
         public price?: number,
         public organizer?: Organizer,
         public venue?: Venue,
-        public eventUsers: EventUser[] = []
+        public eventUsers?: EventUser[]
 
     ) {
 

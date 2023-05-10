@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { Event } from '../Models/Event.model';
+import { ActivatedRoute } from '@angular/router';
+import { APIsService } from '../Services/apis.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from '../Models/User.model';
+import { EventUser } from '../Models/EventUser.model';
 
 @Component({
   selector: 'app-invoice',
@@ -9,6 +15,15 @@ import html2canvas from 'html2canvas';
 })
 export class InvoiceComponent implements OnInit {
 
+
+  event = new Event()
+  helper = new JwtHelperService()
+  user = new User()
+  eventUser = new EventUser()
+  constructor(
+    private rout: ActivatedRoute,
+    private service: APIsService
+  ) { }
   downloadPDF() {
     const doc = new jsPDF();
     const content = document.getElementById("invoice");
@@ -25,7 +40,21 @@ export class InvoiceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    let token = localStorage.getItem("token")
+    if (token != null) {
+      let decodeToken = this.helper.decodeToken(token)
+      this.user = decodeToken.data
+      console.log(this.user)
+    }
+    let id = this.rout.snapshot.params["id"]
+    this.service.getEventById(id).subscribe(res => {
+      this.event = res
+    })
+    this.service.findEventUserIdAndUserId(id, this.user.id!).subscribe(res => {
+      this.eventUser = res
+      console.log(this.eventUser)
+    })
+
   }
 
 }
