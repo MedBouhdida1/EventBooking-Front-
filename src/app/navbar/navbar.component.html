@@ -29,16 +29,19 @@
                     </div>
                     <div class="offcanvas-body">
                         <div class="offcanvas-top-area">
-                            <div class="create-bg">
+                            <div *ngIf="role=='organizer'" class="create-bg">
                                 <a routerLink="/createevent" class="offcanvas-create-btn">
                                     <i class="fa-solid fa-calendar-days"></i>
                                     <span>Create Event</span>
                                 </a>
                             </div>
                         </div>
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe_5">
+                        <ul class="navbar-nav justify-content-center flex-grow-1 pe_5">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" routerLink="/home">About us</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -54,7 +57,7 @@
                                 </ul>
                             </li>
 
-                            <li class="nav-item">
+                            <li *ngIf="role=='organizer'" class="nav-item">
                                 <a class="nav-link" routerLink="/yourevents">Your Events</a>
                             </li>
 
@@ -80,7 +83,7 @@
                 </div>
                 <div class="right-header order-2">
                     <ul class="align-self-stretch">
-                        <li *ngIf="token!=null">
+                        <li *ngIf="role=='organizer'">
                             <a routerLink="/createevent" class="create-btn btn-hover">
                                 <i class="fa-solid fa-calendar-days"></i>
                                 <span>Create Event</span>

@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../Models/User.model';
-import { Organizer } from '../Models/Organizer.model';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { APIsService } from '../Services/apis.service';
 
 @Component({
   selector: 'app-signupuser',
@@ -12,24 +12,34 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class SignupuserComponent implements OnInit {
   User = new User()
-  Organizer = new Organizer();
-
 
   @ViewChild('myForm') myForm?: NgForm;
   constructor(
     private router: Router,
     private toast: NgToastService,
+    private service: APIsService
   ) {
 
   }
 
   submit() {
     if (this.myForm?.valid) {
-      this.toast.success({
-        detail: "Sign up success"
-      })
+
       console.log(this.User)
-      this.router.navigate(["/signinuser"])
+      this.service.registerUser(this.User).subscribe(
+        res => {
+          this.router.navigate(["/signinuser"])
+
+          console.log(res)
+          this.toast.success({
+            detail: "Sign up success"
+          })
+        }, err => {
+          console.log(err)
+          this.toast.warning({
+            detail: "Email already exist"
+          })
+        })
     }
     else {
       this.toast.warning({
@@ -40,6 +50,9 @@ export class SignupuserComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+
 
 
 }

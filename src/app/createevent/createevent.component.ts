@@ -18,7 +18,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 export class CreateeventComponent implements OnInit {
   selectedDate: Date = new Date();
-
+  lastEvent = new Event();
   organizer = new Organizer();
   venue = new Venue();
   event = new Event()
@@ -62,36 +62,44 @@ export class CreateeventComponent implements OnInit {
 
 
   submit() {
-    console.log(this.selectedDate)
     this.event.date = this.selectedDate.toISOString().slice(0, 10)
+    const date = new Date(this.event.date);
 
-    // if (this.checkProperties(this.event) && this.checkProperties(this.venue)) {
+    // Define options for the output string
+    const options: Intl.DateTimeFormatOptions = {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    };
 
-    //   console.log(this.event, this.venue)
-    //   this.toast.success({
-    //     detail: "Event has been added succeffuly"
-    //   }
-    //   );
-    // }
-    // else {
-    //   this.toast.warning({
-    //     detail: "Fields required"
-    //   })
-    // }
+    this.event.date = date.toLocaleString('en-US', options);
+    console.log(this.event.date)
+    if (this.event.time == null) {
+      this.event.time = "10:00 AM"
+    }
+    if (this.event.duration == null) {
+      this.event.duration = "1h"
+    }
+
     if (this.myForm!.valid) {
-      this.service.addEvent(this.event, this.organizer.id!).subscribe(res => {
-        console.log(res)
-        this.toast.success({
-          detail: "Event has been created succeffuly"
-        })
-        this.router.navigate(["/yourevents"])
 
+      this.service.addEvent(this.event, this.organizer.id!).subscribe(eventRes => {
+        console.log(eventRes)
+        this.service.getLastEvent().subscribe(lstevent => {
+          this.lastEvent = lstevent
+
+          this.service.addvenue(this.venue, this.lastEvent.id!).subscribe(res => {
+            console.log(res)
+            this.router.navigate(["/yourevents"])
+
+            this.toast.success({
+              detail: "Event has been created succeffuly"
+            })
+          })
+        })
       }, err => {
         console.log(err)
       })
-
-
-      console.log(this.event, this.venue)
     } else {
       this.toast.warning({
         detail: "Fields required"

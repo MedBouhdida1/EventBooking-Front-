@@ -9,17 +9,17 @@
                 <div class="col-xl-12 col-lg-12 col-md-12">
                     <div class="event-top-dts">
                         <div class="event-top-date">
-                            <span class="event-month">Apr</span>
-                            <span class="event-date">30</span>
+                            <span class="event-month">{{month}}</span>
+                            <span class="event-date">{{day}}</span>
                         </div>
                         <div class="event-top-dt">
-                            <h3 class="event-main-title">Spring Showcase Saturday April 30th 2022 at 7pm</h3>
+                            <h3 class="event-main-title">{{event.name}} {{event.date}} at {{event.time}}</h3>
                             <div class="event-top-info-status">
                                 <span class="event-type-name"><i class="fa-solid fa-location-dot"></i>Venue
                                     Event</span>
-                                <span class="event-type-name details-hr">Starts on <span class="ev-event-date">Sat,
-                                        Apr 30, 2022 11:30 AM</span></span>
-                                <span class="event-type-name details-hr">2h</span>
+                                <span class="event-type-name details-hr">Starts on <span
+                                        class="ev-event-date">{{event.date}} at {{event.time}}</span></span>
+                                <span class="event-type-name details-hr">{{event.duration}}</span>
                             </div>
                         </div>
                     </div>
@@ -32,24 +32,8 @@
 
                         <div class="main-event-content">
                             <h4>About This Event</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor justo, sodales
-                                mattis orci et, mattis faucibus est. Nulla semper consectetur sapien a tempor. Ut
-                                vel lacus lorem. Nulla mauris massa, pharetra a mi ut, mattis euismod libero. Ut
-                                pretium bibendum urna nec egestas. Etiam tempor vehicula libero. Aenean cursus
-                                venenatis orci, ac porttitor leo porta sit amet. Nulla eleifend mollis enim sed
-                                rutrum. Nunc cursus ex a ligula consequat aliquet. Donec semper tellus ac ante
-                                vestibulum, vitae varius leo mattis. In vestibulum blandit tempus. Etiam elit
-                                turpis, volutpat hendrerit varius ut, posuere a sapien. Maecenas molestie bibendum
-                                finibus. Nulla euismod neque vel sem hendrerit faucibus. Nam sit amet metus
-                                sollicitudin, luctus eros at, consectetur libero.</p>
-                            <p>In malesuada luctus libero sed gravida. Suspendisse nunc est, maximus vel viverra
-                                nec, suscipit non massa. Maecenas efficitur vestibulum pellentesque. Ut finibus
-                                ullamcorper congue. Sed ut libero sit amet lorem venenatis facilisis. Mauris egestas
-                                tortor vel massa auctor, eget gravida mauris cursus. Etiam elementum semper
-                                fermentum. Suspendisse potenti. Morbi lobortis leo urna, non laoreet enim ultricies
-                                id. Integer id felis nec sapien consectetur porttitor. Proin tempor mauris in odio
-                                iaculis semper. Cras ultricies nulla et dui viverra, eu convallis orci fermentum.
-                            </p>
+                            <p>{{event.description}}</p>
+
                         </div>
                     </div>
                 </div>
@@ -58,29 +42,14 @@
                         <div class="bp-title">
                             <h4>Event Details</h4>
                         </div>
-                        <div class="time-left">
-                            <div class="countdown">
-                                <div class="countdown-item">
-                                    <span id="day"></span>days
-                                </div>
-                                <div class="countdown-item">
-                                    <span id="hour"></span>Hours
-                                </div>
-                                <div class="countdown-item">
-                                    <span id="minute"></span>Minutes
-                                </div>
-                                <div class="countdown-item">
-                                    <span id="second"></span>Seconds
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="event-dt-right-group mt-5">
                             <div class="event-dt-right-icon">
                                 <i class="fa-solid fa-circle-user"></i>
                             </div>
                             <div class="event-dt-right-content">
                                 <h4>Organised by</h4>
-                                <h5>The Teeny Rabbit</h5>
+                                <h5>{{event.organizer!.firstName}} {{event.organizer!.lastName}}</h5>
                             </div>
                         </div>
                         <div class="event-dt-right-group">
@@ -89,7 +58,7 @@
                             </div>
                             <div class="event-dt-right-content">
                                 <h4>Date and Time</h4>
-                                <h5>Sat, Apr 30, 2022 11:30 AM</h5>
+                                <h5>{{event.date}} {{event.time}}</h5>
 
                             </div>
                         </div>
@@ -99,29 +68,22 @@
                             </div>
                             <div class="event-dt-right-content">
                                 <h4>Location</h4>
-                                <h5 class="mb-0">00 Challis St, Newport, Victoria, 0000, Australia</h5>
+                                <h5 class="mb-0">{{event.venue!.address}}, {{event.venue!.city}},
+                                    {{event.venue!.state}} {{event.venue!.country}}
+
+                                </h5>
                             </div>
                         </div>
                         <div class="select-tickets-block">
-                            <h6>Select Tickets</h6>
-                            <div class="select-ticket-action">
-                                <div class="ticket-price">AUD $75.00</div>
-                                <div class="quantity">
-                                    <div class="counter">
-                                        <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                                        <input type="text" value="1">
-                                        <span class="up" onClick='increaseCount(event, this)'>+</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="xtotel-tickets-count">
-                                <div class="x-title">1x Ticket(s)</div>
-                                <h4>AUD <span>$0.00</span></h4>
-                            </div>
+                            <h6>Ticket Price</h6>
+                            <div class="x-title">1x Ticket(s)</div>
+                            <h4>USD <span>${{event.price}}</span></h4>
                         </div>
-                        <div class="booking-btn">
-                            <a href="checkout.html" class="main-btn btn-hover w-100">Book Now</a>
+                        <div class="booking-btn" *ngIf="role!='organizer'">
+                            <a *ngIf="token!=null" routerLink="/booking/{{event.id}}"
+                                class="main-btn btn-hover w-100">Book Now</a>
+                            <a *ngIf="token==null" routerLink="/signinuser" class="main-btn btn-hover w-100">Book
+                                Now</a>
                         </div>
                     </div>
                 </div>
@@ -132,177 +94,7 @@
                             <a routerLink="/events" class="view-all-link">Browse All<i
                                     class="fa-solid fa-right-long ms-2"></i></a>
                         </div>
-                        <div class="owl-carousel moreEvents-slider owl-theme">
-                            <div class="item">
-                                <div class="main-card mt-4">
-                                    <div class="event-thumbnail">
-                                        <a href="venue_event_detail_view.html" class="thumbnail-img">
-                                            <img src="../../assets/images/event-imgs/img-1.jpg" alt="">
-                                        </a>
-                                        <span class="bookmark-icon" title="Bookmark"></span>
-                                    </div>
-                                    <div class="event-content">
-                                        <a href="venue_event_detail_view.html" class="event-title">A New Way Of
-                                            Life</a>
-                                        <div class="duration-price-remaining">
-                                            <span class="duration-price">AUD $100.00*</span>
-                                            <span class="remaining"></span>
-                                        </div>
-                                    </div>
-                                    <div class="event-footer">
-                                        <div class="event-timing">
-                                            <div class="publish-date">
-                                                <span><i class="fa-solid fa-calendar-day me-2"></i>15 Apr</span>
-                                                <span class="dot"><i class="fa-solid fa-circle"></i></span>
-                                                <span>Fri, 3.45 PM</span>
-                                            </div>
-                                            <span class="publish-time"><i class="fa-solid fa-clock me-2"></i>1h</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="main-card mt-4">
-                                    <div class="event-thumbnail">
-                                        <a href="online_event_detail_view.html" class="thumbnail-img">
-                                            <img src="../../assets/images/event-imgs/img-2.jpg" alt="">
-                                        </a>
-                                        <span class="bookmark-icon" title="Bookmark"></span>
-                                    </div>
-                                    <div class="event-content">
-                                        <a href="online_event_detail_view.html" class="event-title">Earrings
-                                            Workshop with Bronwyn David</a>
-                                        <div class="duration-price-remaining">
-                                            <span class="duration-price">AUD $75.00*</span>
-                                            <span class="remaining"><i class="fa-solid fa-ticket fa-rotate-90"></i>6
-                                                Remaining</span>
-                                        </div>
-                                    </div>
-                                    <div class="event-footer">
-                                        <div class="event-timing">
-                                            <div class="publish-date">
-                                                <span><i class="fa-solid fa-calendar-day me-2"></i>30 Apr</span>
-                                                <span class="dot"><i class="fa-solid fa-circle"></i></span>
-                                                <span>Sat, 11.20 PM</span>
-                                            </div>
-                                            <span class="publish-time"><i class="fa-solid fa-clock me-2"></i>2h</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="main-card mt-4">
-                                    <div class="event-thumbnail">
-                                        <a href="venue_event_detail_view.html" class="thumbnail-img">
-                                            <img src="../../assets/images/event-imgs/img-3.jpg" alt="">
-                                        </a>
-                                        <span class="bookmark-icon" title="Bookmark"></span>
-                                    </div>
-                                    <div class="event-content">
-                                        <a href="venue_event_detail_view.html" class="event-title">Spring Showcase
-                                            Saturday April 30th 2022 at 7pm</a>
-                                        <div class="duration-price-remaining">
-                                            <span class="duration-price">Free*</span>
-                                            <span class="remaining"></span>
-                                        </div>
-                                    </div>
-                                    <div class="event-footer">
-                                        <div class="event-timing">
-                                            <div class="publish-date">
-                                                <span><i class="fa-solid fa-calendar-day me-2"></i>1 May</span>
-                                                <span class="dot"><i class="fa-solid fa-circle"></i></span>
-                                                <span>Sun, 4.30 PM</span>
-                                            </div>
-                                            <span class="publish-time"><i class="fa-solid fa-clock me-2"></i>3h</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="main-card mt-4">
-                                    <div class="event-thumbnail">
-                                        <a href="online_event_detail_view.html" class="thumbnail-img">
-                                            <img src="../../assets/images/event-imgs/img-4.jpg" alt="">
-                                        </a>
-                                        <span class="bookmark-icon" title="Bookmark"></span>
-                                    </div>
-                                    <div class="event-content">
-                                        <a href="online_event_detail_view.html" class="event-title">Shutter Life</a>
-                                        <div class="duration-price-remaining">
-                                            <span class="duration-price">AUD $85.00</span>
-                                            <span class="remaining"><i class="fa-solid fa-ticket fa-rotate-90"></i>7
-                                                Remaining</span>
-                                        </div>
-                                    </div>
-                                    <div class="event-footer">
-                                        <div class="event-timing">
-                                            <div class="publish-date">
-                                                <span><i class="fa-solid fa-calendar-day me-2"></i>1 May</span>
-                                                <span class="dot"><i class="fa-solid fa-circle"></i></span>
-                                                <span>Sun, 5.30 PM</span>
-                                            </div>
-                                            <span class="publish-time"><i class="fa-solid fa-clock me-2"></i>1h</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="main-card mt-4">
-                                    <div class="event-thumbnail">
-                                        <a href="venue_event_detail_view.html" class="thumbnail-img">
-                                            <img src="../../assets/images/event-imgs/img-5.jpg" alt="">
-                                        </a>
-                                        <span class="bookmark-icon" title="Bookmark"></span>
-                                    </div>
-                                    <div class="event-content">
-                                        <a href="venue_event_detail_view.html" class="event-title">Friday Night
-                                            Dinner at The Old Station May 27 2022</a>
-                                        <div class="duration-price-remaining">
-                                            <span class="duration-price">AUD $41.50*</span>
-                                            <span class="remaining"></span>
-                                        </div>
-                                    </div>
-                                    <div class="event-footer">
-                                        <div class="event-timing">
-                                            <div class="publish-date">
-                                                <span><i class="fa-solid fa-calendar-day me-2"></i>27 May</span>
-                                                <span class="dot"><i class="fa-solid fa-circle"></i></span>
-                                                <span>Fri, 12.00 PM</span>
-                                            </div>
-                                            <span class="publish-time"><i class="fa-solid fa-clock me-2"></i>5h</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="main-card mt-4">
-                                    <div class="event-thumbnail">
-                                        <a href="venue_event_detail_view.html" class="thumbnail-img">
-                                            <img src="../../assets/images/event-imgs/img-6.jpg" alt="">
-                                        </a>
-                                        <span class="bookmark-icon" title="Bookmark"></span>
-                                    </div>
-                                    <div class="event-content">
-                                        <a href="venue_event_detail_view.html" class="event-title">Step Up Open Mic
-                                            Show</a>
-                                        <div class="duration-price-remaining">
-                                            <span class="duration-price">AUD $200.00*</span>
-                                            <span class="remaining"></span>
-                                        </div>
-                                    </div>
-                                    <div class="event-footer">
-                                        <div class="event-timing">
-                                            <div class="publish-date">
-                                                <span><i class="fa-solid fa-calendar-day me-2"></i>30 Jun</span>
-                                                <span class="dot"><i class="fa-solid fa-circle"></i></span>
-                                                <span>Thu, 4.30 PM</span>
-                                            </div>
-                                            <span class="publish-time"><i class="fa-solid fa-clock me-2"></i>1h</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

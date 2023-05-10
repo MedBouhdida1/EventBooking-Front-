@@ -9,15 +9,16 @@
                         <h3>Create Venue Event</h3>
                     </div>
                 </div>
-                <form #myForm="ngForm">
-                    <div class="col-xl-8 col-lg-9 col-md-12">
-                        <div class="wizard-steps-block">
-                            <div id="add-event-tab" class="step-app">
+                <div class="col-xl-8 col-lg-9 col-md-12">
+                    <div class="wizard-steps-block">
+                        <div id="add-event-tab" class="step-app">
 
-                                <div class="step-content">
-                                    <div class="step-tab-panel step-tab-info active" id="tab_step1">
-                                        <div class="tab-from-content">
-                                            <div class="main-card">
+                            <div class="step-content">
+                                <div class="step-tab-panel step-tab-info active" id="tab_step1">
+                                    <div class="tab-from-content">
+                                        <div class="main-card">
+                                            <form #myForm="ngForm">
+
                                                 <div class="bp-title">
                                                     <h4><i class="fa-solid fa-circle-info step_icon me-3"></i>Details
                                                     </h4>
@@ -588,20 +589,22 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </form>
+
                                         </div>
+
                                     </div>
-
                                 </div>
-                                <div class="step-footer step-tab-pager mt-4">
 
-                                    <button data-direction="finish" class="btn btn-default btn-hover steps_btn"
-                                        (click)="submit()">Create</button>
-                                </div>
+                            </div>
+                            <div class="step-footer step-tab-pager mt-4">
+
+                                <button data-direction="finish" class="btn btn-default btn-hover steps_btn"
+                                    (click)="submit()">Create</button>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>

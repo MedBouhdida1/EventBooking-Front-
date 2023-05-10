@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit {
 
 
   Logout() {
+
     this.router.navigate(["/home"])
     localStorage.clear()
     window.location.reload()
