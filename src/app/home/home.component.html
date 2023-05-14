@@ -50,13 +50,14 @@
                                     data-ref="mixitup-target">
                                     <div class="main-card mt-4">
                                         <div class="event-thumbnail">
-                                            <a routerLink="/eventdetail" class="thumbnail-img">
-                                                <img src="../../assets/images/event-imgs/img-1.jpg" alt="">
+                                            <a routerLink="/eventdetail/{{event.id}}" class="thumbnail-img">
+                                                <img [src]="event.banner">
                                             </a>
                                             <span class="bookmark-icon" title="Bookmark"></span>
                                         </div>
                                         <div class="event-content">
-                                            <a routerLink="/eventdetail" class="event-title">{{event.name}}</a>
+                                            <a routerLink="/eventdetail/{{event.id}}"
+                                                class="event-title">{{event.name}}</a>
                                             <div class="duration-price-remaining">
                                                 <span class="duration-price">USD ${{event.price}}</span>
                                                 <span class="remaining"></span>

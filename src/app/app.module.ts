@@ -28,6 +28,8 @@ import { SignupuserComponent } from './signupuser/signupuser.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { BookedeventsComponent } from './bookedevents/bookedevents.component';
 
 defineLocale('en-gb', enGbLocale);
 
@@ -51,7 +53,9 @@ defineLocale('en-gb', enGbLocale);
     SignuporganizerComponent,
     SignupuserComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    AboutusComponent,
+    BookedeventsComponent
   ],
   imports: [
     BrowserModule,

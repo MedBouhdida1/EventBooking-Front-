@@ -26,6 +26,7 @@ export class BookingComponent implements OnInit {
   idevent: number = 0
   eventUser = new EventUser()
   applydate = new Date()
+  checkEventUser = new EventUser()
   @ViewChild('myForm') myForm?: NgForm;
 
   constructor(
@@ -39,13 +40,24 @@ export class BookingComponent implements OnInit {
 
   book() {
     if (this.myForm?.valid) {
-      this.eventUser.event = this.event;
-      this.eventUser.user = this.user
-      this.eventUser.date = this.applydate.toISOString().slice(0, 10)
-      this.service.addeventuser(this.eventUser).subscribe(res => {
-        console.log(this.eventUser)
+      this.service.findEventUserIdAndUserId(this.idevent, this.user.id!).subscribe(res => {
+        if (res != null) {
+          this.toast.warning({
+            detail: "You have already booked this event"
+          })
+          this.router.navigate(["/bookedevents"])
+        }
+        else {
+          this.eventUser.event = this.event;
+          this.eventUser.user = this.user
+          this.eventUser.date = this.applydate.toISOString().slice(0, 10)
+          this.service.addeventuser(this.eventUser).subscribe(res => {
+            console.log(this.eventUser)
+          })
+          this.router.navigate(["/bookingconfirmed", this.idevent])
+        }
       })
-      this.router.navigate(["/bookingconfirmed", this.idevent])
+
     }
     else {
       this.toast.info({

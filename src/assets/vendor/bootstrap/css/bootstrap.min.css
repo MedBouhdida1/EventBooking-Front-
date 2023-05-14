@@ -4828,7 +4828,7 @@ fieldset:disabled .btn {
         border-left: 0;
         transition: none;
         transform: none;
-        margin-right: 150px;
+        margin-right: 50px;
     }
 
     .navbar-expand-lg .offcanvas-bottom,

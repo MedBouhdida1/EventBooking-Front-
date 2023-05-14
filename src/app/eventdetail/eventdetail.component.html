@@ -27,7 +27,7 @@
                 <div class="col-xl-8 col-lg-7 col-md-12">
                     <div class="main-event-dt">
                         <div class="event-img">
-                            <img src="../../assets/images/event-imgs/big-2.jpg" alt="">
+                            <img [src]="event.banner" alt="">
                         </div>
 
                         <div class="main-event-content">
@@ -49,7 +49,7 @@
                             </div>
                             <div class="event-dt-right-content">
                                 <h4>Organised by</h4>
-                                <h5>{{event.organizer!.firstName}} {{event.organizer!.lastName}}</h5>
+                                <h5>{{event.organizer?.firstName}} {{event.organizer?.lastName}}</h5>
                             </div>
                         </div>
                         <div class="event-dt-right-group">
@@ -68,8 +68,8 @@
                             </div>
                             <div class="event-dt-right-content">
                                 <h4>Location</h4>
-                                <h5 class="mb-0">{{event.venue!.address}}, {{event.venue!.city}},
-                                    {{event.venue!.state}} {{event.venue!.country}}
+                                <h5 class="mb-0">{{event.venue?.address}}, {{event.venue?.city}},
+                                    {{event.venue?.state}} {{event.venue?.country}}
 
                                 </h5>
                             </div>

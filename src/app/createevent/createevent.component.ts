@@ -23,6 +23,11 @@ export class CreateeventComponent implements OnInit {
   venue = new Venue();
   event = new Event()
   helper = new JwtHelperService()
+  userFile: any
+  message?: String
+  imagePath: any
+  imgURL: any
+
   @ViewChild('myForm') myForm?: NgForm;
 
   constructor(
@@ -82,7 +87,12 @@ export class CreateeventComponent implements OnInit {
     }
 
     if (this.myForm!.valid) {
-
+      if (this.event.banner == null) {
+        this.toast.warning({
+          detail: "You need to select a banner for your event"
+        })
+        return;
+      }
       this.service.addEvent(this.event, this.organizer.id!).subscribe(eventRes => {
         console.log(eventRes)
         this.service.getLastEvent().subscribe(lstevent => {
@@ -107,6 +117,31 @@ export class CreateeventComponent implements OnInit {
     }
 
 
+  }
+  onSelectFile(event: any) {
+
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.userFile = file;
+
+
+      var mimeType = event.target.files[0].type;
+      if (mimeType.match(/image\/*/) == null) {
+        this.message = 'Only images are supported.';
+        console.log(this.message)
+        return;
+      }
+
+      var reader = new FileReader();
+
+      this.imagePath = file;
+      reader.readAsDataURL(file);
+      reader.onload = (_event) => {
+        this.imgURL = reader.result;
+        this.event.banner = this.imgURL
+
+      };
+    }
   }
 
   ngOnInit(): void {

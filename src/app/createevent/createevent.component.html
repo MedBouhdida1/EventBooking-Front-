@@ -472,13 +472,21 @@
                                                                     <div class="default-event-thumb">
                                                                         <div class="default-event-thumb-btn">
                                                                             <div class="thumb-change-btn">
-                                                                                <input type="file" id="thumb-img">
+                                                                                <input type="file" id="thumb-img"
+                                                                                    accept="image/*"
+                                                                                    (change)="onSelectFile($event)"
+                                                                                    required name="image">
                                                                                 <label for="thumb-img">Change
                                                                                     Image</label>
                                                                             </div>
                                                                         </div>
-                                                                        <img src="../../assets/images/banners/custom-img.jpg"
-                                                                            alt="">
+                                                                        <img [src]="imgURL" height="200"
+                                                                            *ngIf="imgURL;else sh">
+                                                                        <ng-template #sh>
+                                                                            <img src="../../assets/images/banners/custom-img.jpg"
+                                                                                alt="">
+                                                                        </ng-template>
+
                                                                     </div>
                                                                 </div>
                                                             </div>

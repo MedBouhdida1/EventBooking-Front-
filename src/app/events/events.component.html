@@ -40,7 +40,7 @@
                                     <div class="main-card mt-4">
                                         <div class="event-thumbnail">
                                             <a routerLink="/eventdetail/{{event.id}}" class="thumbnail-img">
-                                                <img src="../../assets/images/event-imgs/img-1.jpg" alt="">
+                                                <img [src]="event.banner">
                                             </a>
                                             <span class="bookmark-icon" title="Bookmark"></span>
                                         </div>

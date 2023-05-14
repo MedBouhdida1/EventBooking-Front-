@@ -16,18 +16,23 @@ import { SignuporganizerComponent } from './signuporganizer/signuporganizer.comp
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { SignupuserComponent } from './signupuser/signupuser.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { AuthGuard } from './Services/auth.guard';
+import { BookedeventsComponent } from './bookedevents/bookedevents.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'aboutus', component: AboutusComponent },
   { path: 'events', component: EventsComponent },
-  { path: 'createevent', component: CreateeventComponent },
-  { path: 'eventdetail/:id', component: EventdetailComponent },
+  { path: 'createevent', component: CreateeventComponent, canActivate: [AuthGuard] },
+  { path: 'eventdetail/:id', component: EventdetailComponent, canActivate: [AuthGuard] },
   { path: 'contact', component: ContactComponent },
-  { path: 'booking/:id', component: BookingComponent },
-  { path: 'bookingconfirmed/:id', component: BookingconfirmedComponent },
-  { path: 'yourevents', component: YoureventsComponent },
-  { path: 'invoice/:id', component: InvoiceComponent },
+  { path: 'booking/:id', component: BookingComponent, canActivate: [AuthGuard] },
+  { path: 'bookingconfirmed/:id', component: BookingconfirmedComponent, canActivate: [AuthGuard] },
+  { path: 'yourevents', component: YoureventsComponent, canActivate: [AuthGuard] },
+  { path: 'bookedevents', component: BookedeventsComponent, canActivate: [AuthGuard] },
+  { path: 'invoice/:id', component: InvoiceComponent, canActivate: [AuthGuard] },
   { path: 'signinorganizer', component: SigninorganizerComponent },
   { path: 'signinuser', component: SigninuserComponent },
   { path: 'signupuser', component: SignupuserComponent },

@@ -9,6 +9,10 @@ import { Observable } from 'rxjs';
 import { User } from '../Models/User.model';
 import { EventUser } from '../Models/EventUser.model';
 
+
+const httpOption = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -55,7 +59,6 @@ export class APIsService {
   }
   addvenue(venue: Venue, id: number) {
     const URL = `${this.venue}/${id}`
-
     return this.http.post<any>(URL, venue);
   }
 
@@ -73,5 +76,24 @@ export class APIsService {
   findEventUserIdAndUserId(eventId: number, userId: number): Observable<EventUser> {
     const url = `${this.eventuser}/${eventId}/${userId}`
     return this.http.get<EventUser>(url);
+  }
+
+  getEventsByorganizerId(id: number) {
+    return this.http.get<Event[]>(`${this.event + "/getbyorganizer"}/${id}`)
+  }
+
+
+  deleteEvent(id: number) {
+    const URL = `${this.event}/${id}`
+    return this.http.delete(URL, httpOption)
+  }
+
+  getUserById(id: number): Observable<Event> {
+    return this.http.get<User>(`${this.user}/${id}`)
+  }
+
+
+  getBookedEvents(id: number) {
+    return this.http.get<Event[]>(`${this.event}/bookedEvent/${id}`)
   }
 }
