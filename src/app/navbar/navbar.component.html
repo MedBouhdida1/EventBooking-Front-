@@ -57,7 +57,8 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" routerLink="/bookedevents">My Booked Events</a>
+                                <a class="nav-link" *ngIf="role=='user'" aria-current="page"
+                                    routerLink="/bookedevents">My Booked Events</a>
                             </li>
 
                             <li *ngIf="role=='organizer'" class="nav-item">

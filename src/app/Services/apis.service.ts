@@ -73,7 +73,7 @@ export class APIsService {
     return this.http.post<any>(this.eventuser, eventuser);
   }
 
-  findEventUserIdAndUserId(eventId: number, userId: number): Observable<EventUser> {
+  findEventUserByEventIdAndUserId(eventId: number, userId: number): Observable<EventUser> {
     const url = `${this.eventuser}/${eventId}/${userId}`
     return this.http.get<EventUser>(url);
   }

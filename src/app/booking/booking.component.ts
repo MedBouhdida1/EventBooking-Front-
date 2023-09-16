@@ -40,7 +40,7 @@ export class BookingComponent implements OnInit {
 
   book() {
     if (this.myForm?.valid) {
-      this.service.findEventUserIdAndUserId(this.idevent, this.user.id!).subscribe(res => {
+      this.service.findEventUserByEventIdAndUserId(this.idevent, this.user.id!).subscribe(res => {
         if (res != null) {
           this.toast.warning({
             detail: "You have already booked this event"

@@ -50,10 +50,7 @@ export class InvoiceComponent implements OnInit {
     this.service.getEventById(id).subscribe(res => {
       this.event = res
     })
-    this.service.findEventUserIdAndUserId(id, this.user.id!).subscribe(res => {
-      this.eventUser = res
-      console.log(this.eventUser)
-    })
+
 
   }
 
